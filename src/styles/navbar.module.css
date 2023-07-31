@@ -1,0 +1,38 @@
+.navbar{
+    font-family:  Tahoma, sans-serif;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    display: flex;
+    color: antiquewhite;
+    justify-content: space-between;
+}
+
+.navbar div{
+    display: flex;
+}
+.navbar div img{
+    padding: 10px;
+    position: relative;
+    width: 80px;
+    height: 80%;
+    border-radius: 1.5rem;
+}
+
+.navbarRight{
+    display: flex;
+    padding:  20px;
+}
+
+.navbarRight button{
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.navbarRight button:active{
+    height: 85%;
+    background-color: antiquewhite;
+}

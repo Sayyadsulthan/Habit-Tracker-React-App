@@ -1,0 +1,106 @@
+
+
+.homeContainer{
+    padding: 20px;
+    margin: 0;   
+    background-color: #9E9E9E;
+    min-height: 90vh;
+}
+
+.homeContainer .createhabit{
+    padding: 10px;
+    border: 2px solid black;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.homeContainer .createhabit input{
+    font-weight: 600;
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    box-shadow: -2px 2px  rgb(95, 91, 91);
+}
+
+.homeContainer .createhabit button{
+    width: 80px;
+    padding: 5px;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 5px;
+}
+
+.homeContainer .habitWrapper{
+    padding: 20px;
+    margin: 10px;
+    border:  2px solid black;
+    
+}
+.habitWrapper .habitsContainer{
+    display: flex;
+    flex-direction: row;
+    /* padding: 20px; */
+    /* margin: 10px; */
+    border:  2px solid black;
+    border-radius: 10px;
+    
+}
+.habitWrapper .habitsContainer img{
+    box-sizing: border-box;
+    position: relative;
+    width: 50px;
+    margin-left: 30px;
+    border-left: 2px dotted yellowgreen;
+    padding-left: 10px;
+}
+
+.habitsContainer img:active{
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+.habitsContainer .habitStatus{
+    border-right: 2px solid violet;
+    height: 60px;
+    width: 20%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.habitsContainer .habitStatus img{
+    border: none;
+}
+
+.habitsContainer .habitBody{
+    padding-top: 10px;
+    text-align: center;
+    height: 60px;
+    width: 50%;
+    border-right: 2px solid blue;
+}
+
+.habitsContainer .habitBody .habitContent{
+    font-size: larger;
+    font-weight: bolder;
+}
+.habitsContainer .habitBody .habitDate{
+    font-weight: 600;
+}
+
+.habitsContainer .habitEditor span{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    padding: 10px;
+}
+
+.habitsContainer .habitEditor{
+    padding-top: 10px;
+    text-align: center;
+    height: 60px;
+    width: 30%;
+    display: flex;
+    /* border: 2px solid rgb(18, 109, 93); */
+
+}
