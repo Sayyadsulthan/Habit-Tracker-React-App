@@ -9,6 +9,7 @@ const initialState = {
   loading: true,
   signup: () => {},
   createNewHabit: () => {},
+  removeHabit: () => {},
 };
 
 export const AuthContext = createContext(initialState);

@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers";
-import { login as userLogin, createUser, createHabit, getHabits } from "../api";
+import {
+  login as userLogin,
+  createUser,
+  createHabit,
+  getHabits,
+  removeHabit as deleteHabit,
+} from "../api";
 import jwtDecode from "jwt-decode";
 import {
   getItemFromLocalStorage,
@@ -23,17 +29,16 @@ export const useProvideAuth = () => {
       setLoading(true);
 
       const userToken = getItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
+      // console.log("userToken in hooks", userToken);
       if (userToken) {
-        const response = await getHabits();
-        console.log("allHabits in hooks", response.data.habits);
         const user = await jwtDecode(userToken);
-        console.log("jwt decode in hooks", user);
-        if(response.success){
-
-          
+        // console.log(user)
+        const response = await getHabits();
+        // console.log("allHabits in hooks", response.data.habits);
+        // console.log("jwt decode in hooks", user);
+        if (response.success) {
           setUser({ ...user, habits: response.data.habits });
-        }else{
-
+        } else {
           setUser(user);
         }
       }
@@ -92,11 +97,19 @@ export const useProvideAuth = () => {
   };
 
   const createNewHabit = async (habitName) => {
+    setLoading(true);
+
     const habit = await createHabit(habitName);
     if (habit.success) {
-      const allHabits = await getHabits();
-      console.log("all habits in createNewHabit hook ", allHabits)
-      setUser({ ...user, habits: allHabits.habits });
+      // const allHabits = await getHabits();
+      // console.log("all habits in createNewHabit hook ", allHabits.data.habits);
+      // setUser({ ...user, habits: allHabits.data.habits });
+      const response = await getHabits();
+      const habitStore = response.data.habits;
+      console.log("all Habits in createNewHabit hooks", habitStore);
+      await setUser({ ...user, habits: [...habitStore] });
+      console.warn(user);
+      setLoading(false);
       return {
         success: true,
         message: "habit created successfully..",
@@ -109,8 +122,29 @@ export const useProvideAuth = () => {
     };
   };
 
+  const removeHabit = async (habit_id) => {
+    setLoading(true);
 
-  
+    const response = await deleteHabit(habit_id);
+
+    if (response.success) {
+      const updatedHabits = await getHabits();
+      console.log("all habits in removeHabit hook ", updatedHabits);
+      setUser({ ...user, habits: [...updatedHabits.data.habits] });
+
+      setLoading(false);
+      return {
+        success: true,
+        data: updatedHabits.data.habits,
+      };
+    }
+
+    return {
+      success: false,
+      message: response.message,
+    };
+  };
+
   return {
     user,
     loading,
@@ -118,5 +152,6 @@ export const useProvideAuth = () => {
     logout,
     signup,
     createNewHabit,
+    removeHabit,
   };
 };
