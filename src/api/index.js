@@ -7,7 +7,7 @@ const customFetch = async (url, { body, ...customConfig }) => {
 
   //   setting the headers
   const headers = {
-    "context-type": "application/x-www-form-urlencoded",
+    "content-type": "application/x-www-form-urlencoded",
   };
 
   //   if the token exist set put it to headers
@@ -28,34 +28,36 @@ const customFetch = async (url, { body, ...customConfig }) => {
   }
 
   try {
-    const data = await fetch(url, config);
-
+    const response = await fetch(url, config);
+    const data = await response.json();
+    console.log("custom fetch :", data);
     if (data.success) {
       return {
+        data,
         message: data.message,
         success: true,
       };
+    } else {
+      throw new Error(data.message);
     }
-
-    throw new Error(data.message);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
 
     return {
-      message: err.message,
+      message: error.message,
       success: false,
     };
   }
 };
 
-export const createUser = (name, email, password, confirm_password) => {
-  return customFetch(API_URLS, {
+export const createUser = async (name, email, password, confirm_password) => {
+  return customFetch(API_URLS.createUser(), {
     method: "POST",
     body: { name, email, password, confirm_password },
   });
 };
 
-export const login = (email, password) => {
+export const login = async (email, password) => {
   return customFetch(API_URLS.login(), {
     method: "POST",
     body: { email, password },
@@ -64,4 +66,23 @@ export const login = (email, password) => {
 
 export const logout = () => {
   return customFetch(API_URLS.logout(), { method: "POST" });
+};
+
+export const createHabit = async (name) => {
+  return customFetch(API_URLS.createHabit(), {
+    method: "POST",
+    body: { name },
+  });
+};
+export const updateHabit = async (name, status, habbit_id) => {
+  return customFetch(API_URLS.updateHabit(habbit_id), {
+    method: "PATCH",
+    body: { name, status },
+  });
+};
+export const removeHabit = async (habit_id) => {
+  return customFetch(API_URLS.removeHabit(habit_id), { method: "DELETE" });
+};
+export const getHabits = async () => {
+  return customFetch(API_URLS.dashboard(), { method: "GET" });
 };

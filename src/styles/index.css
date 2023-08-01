@@ -31,3 +31,58 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.loginWrapper{
+  padding: 10px;
+  margin: 0;
+  /* background-color: bisque; */
+  height: 85vh;
+  /* border: 2px solid black; */
+}
+
+
+
+
+.loginWrapper .loginContainer{
+  background-color: white;
+  width: 50vw;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.loginWrapper .loginContainer form{
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  align-items: center;
+}
+
+.loginContainer form > input{
+  font-size: larger;
+  margin: 5px;
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.loginContainer form > input:focus{
+  background-color: rgb(133, 158, 158);
+  color: aliceblue;
+}
+
+.loginContainer form > button {
+  margin: 5px;
+  width: 60%;
+  border-radius: 5px;
+  padding: 8px;
+  transition: 0.5s ease-in-out;
+}
+.loginContainer form > button:hover{
+  transform: scaleX(1.4) scaleY(1.2);
+}

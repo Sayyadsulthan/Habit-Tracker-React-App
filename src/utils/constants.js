@@ -2,25 +2,23 @@ const API_ROOT = "http://127.0.0.1:8000/api/user";
 
 export const API_URLS = {
   dashboard: () => {
-    `${API_ROOT}/dashboard`;
+    return `${API_ROOT}/dashboard`; // Add 'return' here
   },
   login: () => {
-    `${API_ROOT}/login`;
+    return `${API_ROOT}/login`; // Add 'return' here
   },
   logout: () => {
-    `${API_ROOT}/logout`;
+    return `${API_ROOT}/logout`; // Add 'return' here
   },
-  createUser: () => {
-    `${API_ROOT}/create`;
-  },
+  createUser: () => `${API_ROOT}/create`, // Add 'return' here,
   createHabit: () => {
-    `${API_ROOT}//habit/create`;
+    return `${API_ROOT}/habit/create`; // Add 'return' here
   },
   updateHabit: (habit_id) => {
-    `${API_ROOT}//habit/update/${habit_id}`;
+    return `${API_ROOT}/habit/update/${habit_id}`; // Add 'return' here
   },
   removeHabit: (habit_id) => {
-    `${API_ROOT}//habit/${habit_id}`;
+    return `${API_ROOT}/habit/${habit_id}`; // Add 'return' here
   },
 };
 

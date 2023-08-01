@@ -1,7 +1,10 @@
+import { useAuth } from "../hooks";
 import styles from "../styles/navbar.module.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const auth = useAuth();
+
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarLeft}>
@@ -15,15 +18,20 @@ function Navbar() {
       </div>
       <div className={styles.navbarRight}>
         {" "}
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/signup">
-          <button>SignUp</button>
-        </Link>
-        <Link to="/logout">
-          <button>Logout</button>
-        </Link>
+        {auth.user ? (
+          <li style={{ listStyle: "none" }}>
+            <button onClick={auth.logout}>Logout</button>
+          </li>
+        ) : (
+          <>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/signup">
+              <button>SignUp</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
