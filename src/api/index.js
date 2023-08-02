@@ -74,10 +74,10 @@ export const createHabit = async (name) => {
     body: { name },
   });
 };
-export const updateHabit = async (name, status, habbit_id) => {
-  return customFetch(API_URLS.updateHabit(habbit_id), {
+export const updateHabit = async (date, status, habit_id) => {
+  return customFetch(API_URLS.updateHabit(habit_id), {
     method: "PATCH",
-    body: { name, status },
+    body: { date, status },
   });
 };
 export const removeHabit = async (habit_id) => {

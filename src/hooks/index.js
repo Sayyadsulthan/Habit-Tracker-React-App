@@ -138,11 +138,31 @@ export const useProvideAuth = () => {
         data: updatedHabits.data.habits,
       };
     }
-
+    setLoading(false);
     return {
       success: false,
       message: response.message,
     };
+  };
+
+  const updateHabit = async () => {
+    setLoading(true);
+    const updatedHabits = await getHabits();
+    if (updatedHabits.success) {
+      console.log("all habits in removeHabit hook ", updatedHabits);
+      setUser({ ...user, habits: [...updatedHabits.data.habits] });
+      setLoading(false);
+      return {
+        message: "user habits updated locally",
+        success: true,
+      };
+    } else {
+      setLoading(false);
+      return {
+        message: "please trye after some times",
+        success: false,
+      };
+    }
   };
 
   return {
@@ -153,5 +173,6 @@ export const useProvideAuth = () => {
     signup,
     createNewHabit,
     removeHabit,
+    updateHabit,
   };
 };

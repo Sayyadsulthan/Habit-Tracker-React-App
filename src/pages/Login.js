@@ -12,7 +12,7 @@ function Login() {
     if (auth.user) {
       return history("/");
     }
-  }, []);
+  }, [auth,history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

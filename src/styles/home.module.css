@@ -33,7 +33,7 @@
 .homeContainer .habitWrapper{
     padding: 20px;
     margin: 10px;
-    border:  2px solid black;
+    /* border:  2px solid black; */
     
 }
 .habitWrapper .habitsContainer{
@@ -43,14 +43,15 @@
     /* margin: 10px; */
     border:  2px solid black;
     border-radius: 10px;
-    
+    margin: 5px;
+    box-shadow: 2px 3px #352d2d;
 }
 .habitWrapper .habitsContainer img{
     box-sizing: border-box;
     position: relative;
     width: 50px;
     margin-left: 30px;
-    border-left: 2px dotted yellowgreen;
+    /* border-left: 2px dotted yellowgreen; */
     padding-left: 10px;
     
 }
@@ -62,7 +63,7 @@
 }
 
 .habitsContainer .habitStatus{
-    border-right: 2px solid violet;
+    /* border-right: 2px solid violet; */
     height: 60px;
     width: 20%;
     text-align: center;
@@ -78,7 +79,9 @@
     text-align: center;
     height: 60px;
     width: 50%;
-    border-right: 2px solid blue;
+    /* border-right: 2px solid blue; */
+    border-left: solid black;
+    border-right: solid black;
 }
 
 .habitsContainer .habitBody .habitContent{

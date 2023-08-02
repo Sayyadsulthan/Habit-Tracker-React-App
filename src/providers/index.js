@@ -10,6 +10,7 @@ const initialState = {
   signup: () => {},
   createNewHabit: () => {},
   removeHabit: () => {},
+  updateHabit: () => {},
 };
 
 export const AuthContext = createContext(initialState);

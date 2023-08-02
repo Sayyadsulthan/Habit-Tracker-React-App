@@ -35,21 +35,15 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/" Component={Home} />
           </Route>
 
           {/* <Route path="/dashboard" Component={Dashboard} /> */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                {" "}
-                <Dashboard />{" "}
-              </ProtectedRoutes>
-            }
-          />
+          <Route path="/dashboard" element={<ProtectedRoutes />}>
+            <Route path="/dashboard" Component={Dashboard} />
+          </Route>
+
           <Route path="/login" Component={Login} />
           <Route path="/signup" Component={Signup} />
         </Routes>

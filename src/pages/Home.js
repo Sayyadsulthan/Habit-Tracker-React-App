@@ -12,8 +12,8 @@ if (DD <= 9) DD = "0" + DD;
 let MM = date.getMonth() + 1;
 if (MM <= 9) MM = "0" + MM;
 let YY = date.getFullYear();
-var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-var lastDay = new Date(date.getFullYear(), date.getMonth(), 0);
+// var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+// var lastDay = new Date(date.getFullYear(), date.getMonth(), 0);
 const currentDate = YY + "-" + MM + "-" + DD;
 // let index = 0;
 
@@ -22,14 +22,13 @@ function Home() {
   const auth = useAuth();
   const [habits, sethabits] = useState([]);
   useEffect(() => {
-    if(auth.user){
-
+    if (auth.user) {
       sethabits([...auth.user.habits]);
     }
   }, []);
 
   const handleCreateHabit = async () => {
-    if (habit.length == 0) {
+    if (habit.length === 0) {
       console.log("please enter the habit you want to track");
       return toast.warn("please enter the habit you want to track");
     }
@@ -74,11 +73,7 @@ function Home() {
         <div className={styles.habitWrapper}>
           {/* {console.log(habits)} */}
           {habits.map((content) => {
-            {
-              // index = getIndex(content)
-              console.log("index", getIndex(content));
-              // console.log("index",index)
-            }
+            
             return (
               <div className={styles.habitsContainer} key={content._id}>
                 <div className={styles.habitStatus}>
