@@ -1,17 +1,45 @@
 
-
+@keyframes backgroundChange {
+    50%{
+        background-position:10% ;
+    }
+    100%{
+        background-position: 50% ;
+        /* background-position: 0%; */
+    }
+}
 .homeContainer{
     padding: 20px;
     margin: 0;   
     background-color: #9E9E9E;
+    background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJ8ApwMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAABAgMABQQH/8QAGhABAQEBAQEBAAAAAAAAAAAAAAERAhIxIf/EABkBAQEBAQEBAAAAAAAAAAAAAAIBAAQFA//EABkRAQEBAAMAAAAAAAAAAAAAAAABEQISMf/aAAwDAQACEQMRAD8A+dYOHxse5jwdJjYp5bFbU8bFPLYzangeVcbGbUvIYpeQxMXU7C4rYWxC1OwMUwMCxdSwtiuBYFOVHAsUsLYlKVOwuK4WwClTsY1gieuvjeT42O/Hm6XGw+NjYnYmNinkLGxtTxsUxvLNqWBimBjLqVgWLeSWDhTklYWxWwLEKVKwLFMCwLC1Kwli2FsCnKjYFil5LYlh6nYxrGHF12ZyPk8g47cebqfkfJ8bFxNJjYfBxcbU8bypgWNY2p3ktiuFsGwpUsCxWwtiYUqVhbyrYXBwpUrAxSwtiHKnYSxaksCwpUsLYrYWwbDlSsE1jDha7ODg4aR2x5ulxsPjYSaTBw8jYyanjYfy3lm1PAvKuFwaWpYFit5LYKyo2FxawtiHKjYWxa8lsE5UbC2K2FsClKjYWxWwlgvpKnYx7GEtdiC0hnbHmhBwRxWBhxsVNAMNgI2hhcODVSFsVJYFiyp2FxSwtE5U6VTCWIcpLCWKUlg04nS1SwlgU4nYxrGEtdeCEF2RwGglhlGsICqAzMjAFEGIKWmoUapLC2HLRKELYagJxOwtP0ToacJSdfD9EvwK+kJWGsJOqJYOuuOKnglg6QmYGZMEGZmYGZFCgNAVhaFGhUKFpTUlAoSkp6Wo+kTpaekoX04Ss1YTdLTQkptdMcdhobSQZTE8rF0dZBZtbWZmbQRmoUaWjVAKJahBSU9IFKEpaal6+JX0hKTr4ekoHCVmoCb3ymlSlNK6Y5rFZRlT0ZVGxXW0mj6XUw+tpNHUQ2tpdbUYbQbQ1Ga0rUtqaUaltG0tQoW0vV/BpLQr6SB1SU1pKJwtZqyG9Ep5UZTSuiV8rFpTSpSjOlDFdHU5R1hw8o6TW1kw+tpNbUbD6Gl1tRsG0toWghSNaFoWktQpBtLaxbf0KcgUujaSicjWgFFNJ//Z);
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 90vh;
+    text-align: center;
+    animation: backgroundChange 6s ease-in-out ;
+}
+.homeContainer > h1 {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .homeContainer .createhabit{
     padding: 10px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding-left: 30%;
     padding-right: 30%;
+}
+
+.subTitle {
+    color: aliceblue;
+    /* text-decoration-style: double; */
+    text-transform: uppercase;
+    text-shadow: 3px 2px #9E9E9E;
+}
+
+.subTitle:hover{
+    color: #e5d2d2;
 }
 
 .homeContainer .createhabit input{

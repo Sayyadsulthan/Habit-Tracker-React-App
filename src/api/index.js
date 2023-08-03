@@ -80,9 +80,25 @@ export const updateHabit = async (date, status, habit_id) => {
     body: { date, status },
   });
 };
+
+export const updateHabitNAme = async (habitName, habit_id) => {
+  // console.log(dataName)
+  return customFetch(API_URLS.updateHabitName(habit_id), {
+    method: "PATCH",
+    body: { name: habitName },
+  });
+};
+
+export const updateFavourite = async (isFavourite, habit_id) => {
+  return customFetch(API_URLS.updateFavourite(habit_id), {
+    method: "PATCH",
+    body: { isFavourite },
+  });
+};
 export const removeHabit = async (habit_id) => {
   return customFetch(API_URLS.removeHabit(habit_id), { method: "DELETE" });
 };
+
 export const getHabits = async () => {
   return customFetch(API_URLS.dashboard(), { method: "GET" });
 };

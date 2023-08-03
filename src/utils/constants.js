@@ -17,6 +17,12 @@ export const API_URLS = {
   updateHabit: (habit_id) => {
     return `${API_ROOT}/habit/update/${habit_id}`; // Add 'return' here
   },
+  updateHabitName: (habit_id) => {
+    return `${API_ROOT}/habit/updateName/${habit_id}`;
+  },
+  updateFavourite: (habit_id) => {
+    return `${API_ROOT}/habit/updateFavourite/${habit_id}`;
+  },
   removeHabit: (habit_id) => {
     return `${API_ROOT}/habit/${habit_id}`; // Add 'return' here
   },

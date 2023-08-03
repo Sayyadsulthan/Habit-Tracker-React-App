@@ -12,6 +12,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import { useAuth } from "../hooks";
 import Loader from "./Loader";
+import Favourites from "./Favourites";
 
 // import { Navigate } from "react-router-dom";
 
@@ -30,6 +31,7 @@ function App() {
   if (auth.loading) {
     return <Loader />;
   }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -42,6 +44,9 @@ function App() {
           {/* <Route path="/dashboard" Component={Dashboard} /> */}
           <Route path="/dashboard" element={<ProtectedRoutes />}>
             <Route path="/dashboard" Component={Dashboard} />
+          </Route>
+          <Route path="/favourites" element={<ProtectedRoutes />}>
+            <Route path="/favourites" Component={Favourites} />
           </Route>
 
           <Route path="/login" Component={Login} />

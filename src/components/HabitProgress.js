@@ -7,13 +7,13 @@ import { toast } from "react-toastify";
 import Loader from "./Loader";
 
 const weekDays = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednassday",
-  "thursday",
-  "friday",
-  "saturday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednassday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
 
 function getWeekdayOfMonth(dateString) {
@@ -160,7 +160,47 @@ function HabitProgress({ habit }) {
               <>
                 <div className={styles.details}>
                   <span>{date.date}</span>
-                  {date.completed === "undefined" ? (
+                  {date.date ? (
+                    date.completed === "undefined" ? (
+                      <img
+                        onClick={() => {
+                          handleStatus(date.date, date.status);
+                        }}
+                        src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                        alt="pending.."
+                      />
+                    ) : date.completed === "true" ? (
+                      <img
+                        onClick={() => {
+                          handleStatus(date.date, date.status);
+                        }}
+                        src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                        alt="completed"
+                      />
+                    ) : (
+                      <img
+                        onClick={() => {
+                          console.log(date);
+                          handleStatus(date.date, date.status);
+                        }}
+                        src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                        alt="not-done"
+                      />
+                    )
+                  ) : (
+                    <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
+                  )}
+                </div>
+              </>
+            ))}
+            {/* <span>date</span> */}
+          </div>
+          <div className={styles.dates}>
+            {monday.map((date) => (
+              <div className={styles.details}>
+                <span>{date.date}</span>
+                {date.date ? (
+                  date.completed === "undefined" ? (
                     <img
                       onClick={() => {
                         handleStatus(date.date, date.status);
@@ -180,48 +220,14 @@ function HabitProgress({ habit }) {
                     <img
                       onClick={() => {
                         console.log(date);
-                        // setStoreClickData(date.date, date.status);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
                       alt="not-done"
                     />
-                  )}
-                </div>
-              </>
-            ))}
-            {/* <span>date</span> */}
-          </div>
-          <div className={styles.dates}>
-            {monday.map((date) => (
-              <div className={styles.details}>
-                <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}
@@ -231,32 +237,35 @@ function HabitProgress({ habit }) {
             {tuesday.map((date) => (
               <div className={styles.details}>
                 <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                {date.date ? (
+                  date.completed === "undefined" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                      alt="pending.."
+                    />
+                  ) : date.completed === "true" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                      alt="completed"
+                    />
+                  ) : (
+                    <img
+                      onClick={() => {
+                        console.log(date);
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                      alt="not-done"
+                    />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}
@@ -266,32 +275,35 @@ function HabitProgress({ habit }) {
             {wednesday.map((date) => (
               <div className={styles.details}>
                 <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                {date.date ? (
+                  date.completed === "undefined" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                      alt="pending.."
+                    />
+                  ) : date.completed === "true" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                      alt="completed"
+                    />
+                  ) : (
+                    <img
+                      onClick={() => {
+                        console.log(date);
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                      alt="not-done"
+                    />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}
@@ -301,32 +313,35 @@ function HabitProgress({ habit }) {
             {thursday.map((date) => (
               <div className={styles.details}>
                 <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                {date.date ? (
+                  date.completed === "undefined" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                      alt="pending.."
+                    />
+                  ) : date.completed === "true" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                      alt="completed"
+                    />
+                  ) : (
+                    <img
+                      onClick={() => {
+                        console.log(date);
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                      alt="not-done"
+                    />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}
@@ -336,32 +351,35 @@ function HabitProgress({ habit }) {
             {friday.map((date) => (
               <div className={styles.details}>
                 <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                {date.date ? (
+                  date.completed === "undefined" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                      alt="pending.."
+                    />
+                  ) : date.completed === "true" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                      alt="completed"
+                    />
+                  ) : (
+                    <img
+                      onClick={() => {
+                        console.log(date);
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                      alt="not-done"
+                    />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}
@@ -371,32 +389,35 @@ function HabitProgress({ habit }) {
             {saturday.map((date) => (
               <div className={styles.details}>
                 <span>{date.date}</span>
-                {date.completed === "undefined" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
-                    alt="pending.."
-                  />
-                ) : date.completed === "true" ? (
-                  <img
-                    onClick={() => {
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                    alt="completed"
-                  />
+                {date.date ? (
+                  date.completed === "undefined" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
+                      alt="pending.."
+                    />
+                  ) : date.completed === "true" ? (
+                    <img
+                      onClick={() => {
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
+                      alt="completed"
+                    />
+                  ) : (
+                    <img
+                      onClick={() => {
+                        console.log(date);
+                        handleStatus(date.date, date.status);
+                      }}
+                      src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
+                      alt="not-done"
+                    />
+                  )
                 ) : (
-                  <img
-                    onClick={() => {
-                      console.log(date);
-                      // setStoreClickData(date.date, date.status);
-                      handleStatus(date.date, date.status);
-                    }}
-                    src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
-                    alt="not-done"
-                  />
+                  <img src="https://cdn-icons-png.flaticon.com/128/4076/4076478.png" />
                 )}
               </div>
             ))}

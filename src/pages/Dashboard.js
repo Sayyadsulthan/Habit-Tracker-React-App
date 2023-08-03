@@ -1,45 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../hooks";
-import { toast } from "react-toastify";
 
 import Loader from "../components/Loader";
 import styles from "../styles/dashboard.module.css";
 import HabitProgress from "../components/HabitProgress";
-
-const weekDays = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednassday",
-  "thursday",
-  "friday",
-  "saturday",
-];
-
-function getWeekdayOfMonth(dateString) {
-  const weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  // Create a new Date object using the given dateString
-  const date = new Date(dateString);
-
-  // Get the day of the week as a numeric value (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
-  const dayOfWeek = date.getDay();
-
-  // Return the weekday name corresponding to the numeric value
-  return weekdays[dayOfWeek];
-}
-
-// const date = "2023-07-25";
-// const weekday = getWeekdayOfMonth(date);
-// console.log(weekday); // Output: "Tuesday"
 
 function Dashboard() {
   const auth = useAuth();
@@ -49,9 +13,9 @@ function Dashboard() {
     setHabits(auth.user.habits);
   }, []);
 
-  // if (auth.loading) {
-  //   return <Loader />;
-  // }
+  if (auth.loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -65,6 +29,10 @@ function Dashboard() {
             </div>
           );
         })}
+
+        {habits.length <= 0 && (
+          <h1 className={styles.title}>Nothing to Show...</h1>
+        )}
       </div>
     </>
   );
