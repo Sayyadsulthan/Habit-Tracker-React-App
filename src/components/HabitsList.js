@@ -22,10 +22,13 @@ function HabitsList({ content, auth }) {
   const [habitName, setHabitName] = useState("");
   let currentMonthData = content.status[getIndex(content)];
   const [isLoading, setIsLoading] = useState(false);
+  // const auth = useAuth();
+  const [isRendering, setIsRedering] = useState(true);
 
   useEffect(() => {
     setHabitName(content.name);
-  }, []);
+    setIsRedering(false);
+  }, [toast, isRendering]);
 
   function getIndex(content) {
     let res = 0;
@@ -49,8 +52,9 @@ function HabitsList({ content, auth }) {
       const response = await updateHabit(date, status, habit_id);
 
       if (response.success) {
-        auth.updateHabit();
+        await auth.updateHabit();
         toast.success("status updated successfully..");
+        setIsRedering(true);
       } else {
         toast.error(response.message);
       }
@@ -58,20 +62,8 @@ function HabitsList({ content, auth }) {
     }
   };
 
-  const handleUpdateName = async (habit_id) => {
-    const response = await updateHabitNAme(habitName, habit_id);
-    setIsLoading(true)
-    if (response.success) {
-      await auth.updateHabit();
-      toast.success("Habit name updated successfully...");
-    } else {
-      toast.error(response.message);
-    }
-    setIsLoading(false)
-  };
-
   const handleFavourites = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const response = await updateFavourite(content.isFavourite, content._id);
     if (response.success) {
       await auth.updateHabit();
@@ -79,12 +71,23 @@ function HabitsList({ content, auth }) {
     } else {
       toast.error(response.message);
     }
-    setIsLoading(false)
+    setIsLoading(false);
+  };
+  const handleUpdateName = async (habit_id) => {
+    setIsLoading(true);
+    const response = await updateHabitNAme(habitName, habit_id);
+    if (response.success) {
+      await auth.updateHabit();
+      toast.success(response.message);
+    } else {
+      toast.error(response.message);
+    }
+    setIsLoading(false);
   };
 
-  if (isLoading ) {
-    return <Loader />;
-  }
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className={styles.habitsContainer} key={content._id}>
@@ -92,7 +95,7 @@ function HabitsList({ content, auth }) {
         {/* {console.log(content)} */}
         {/* <span> habit-Status</span> */}
 
-        {content.status[getIndex(content)].completed === "undefined" ? (
+        {currentMonthData.completed === "undefined" ? (
           <img
             onClick={() =>
               handleStatus(currentMonthData.date, currentMonthData.completed)
@@ -100,7 +103,7 @@ function HabitsList({ content, auth }) {
             src="https://cdn-icons-png.flaticon.com/128/10755/10755684.png"
             alt="pending.."
           />
-        ) : content.status[getIndex(content)].completed === "true" ? (
+        ) : currentMonthData.completed === "true" ? (
           <img
             onClick={() =>
               handleStatus(currentMonthData.date, currentMonthData.completed)
@@ -123,11 +126,11 @@ function HabitsList({ content, auth }) {
         <div className={styles.habitContent}>
           {isEditable ? (
             <input
-              value={habitName}
+              value={isLoading ? "please Wait ..." : habitName}
               onChange={(e) => setHabitName(e.target.value)}
             />
           ) : (
-            <span> {habitName}</span>
+            <span> {isLoading ? "Pleasw wait" : habitName}</span>
           )}
         </div>
         <div className={styles.habitDate}>

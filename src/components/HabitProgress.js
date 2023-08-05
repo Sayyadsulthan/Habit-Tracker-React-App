@@ -41,7 +41,7 @@ function getWeekdayOfMonth(dateString) {
 // const weekday = getWeekdayOfMonth(date);
 // console.log(weekday); // Output: "Tuesday"
 
-function HabitProgress({ habit }) {
+function HabitProgress({ habit, handleRendering }) {
   const [loading, setLoading] = useState(false);
   const auth = useAuth();
 
@@ -52,12 +52,6 @@ function HabitProgress({ habit }) {
   const thursday = [];
   const friday = [];
   const saturday = [];
-
-  function testLoading() {
-    setLoading(true);
-
-    setInterval(() => setLoading(false), 3000);
-  }
 
   habit.status.map((data, index) => {
     if (index === 0) {
@@ -126,6 +120,7 @@ function HabitProgress({ habit }) {
       const response = await updateHabit(date, status, habit_id);
       if (response.success) {
         await auth.updateHabit();
+        handleRendering();
         toast.success("status updated successfully..");
       } else {
         toast.error(response.message);
@@ -146,7 +141,7 @@ function HabitProgress({ habit }) {
     <>
       <div className={styles.dashboardBody}>
         <div className={styles.habitName}>
-          <h1 onClick={testLoading}>{habit.name}</h1>
+          <h1>{habit.name}</h1>
         </div>
 
         <div className={styles.dashboardLeft}>

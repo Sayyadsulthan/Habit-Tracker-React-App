@@ -45,26 +45,8 @@ function Home() {
     }
   };
 
-  // function getIndex(content) {
-  //   let res = 0;
-  //   content.status.forEach((val, i) => {
-  //     if (val.date === currentDate) {
-  //       console.log("yes", i);
-  //       res = i;
-  //       return;
-  //     }
-  //   });
-  //   return res;
-  // }
-
-  if (auth.loading) {
-    return <Loader />;
-  }
-
   return (
     <>
-      {/* <Loader /> */}
-
       <div className={styles.homeContainer}>
         <h1>
           <Link className={styles.subTitle} to="/dashboard">
@@ -84,7 +66,9 @@ function Home() {
         <div className={styles.habitWrapper}>
           {/* {console.log(habits)} */}
           {habits.map((content) => {
-            return <HabitsList content={content} auth={auth} />;
+            return (
+              <HabitsList content={content} auth={auth} key={content._id} />
+            );
           })}
         </div>
       </div>
