@@ -34,7 +34,7 @@ function HabitsList({ content, auth }) {
     let res = 0;
     content.status.forEach((val, i) => {
       if (val.date === currentDate) {
-        console.log("yes", i);
+        // console.log("yes", i);
         res = i;
         return;
       }
@@ -94,8 +94,8 @@ function HabitsList({ content, auth }) {
       <div className={styles.habitStatus}>
         {/* {console.log(content)} */}
         {/* <span> habit-Status</span> */}
-
-        {currentMonthData.completed === "undefined" ? (
+        {/* {console.log(currentMonthData.completed )} */}
+        {!currentMonthData.completed ? (
           <img
             onClick={() =>
               handleStatus(currentMonthData.date, currentMonthData.completed)

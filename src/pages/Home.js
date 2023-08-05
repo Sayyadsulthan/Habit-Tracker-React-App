@@ -26,7 +26,7 @@ function Home() {
   // sethabits([...auth.user.habits]);
   useEffect(() => {
     sethabits([...auth.user.habits]);
-    console.log("use effect in home");
+    // console.log("use effect in home");
   }, [toast, auth]);
 
   const handleCreateHabit = async () => {
@@ -38,8 +38,9 @@ function Home() {
     const response = await auth.createNewHabit(habit);
 
     if (response.success) {
+     await auth.updateHabit();
+      setHAbit("");
       toast.success(response.message);
-      // sethabits(auth.user.habits);
     } else {
       toast.error(response.message);
     }
@@ -59,7 +60,11 @@ function Home() {
           </Link>
         </h1>
         <div className={styles.createhabit}>
-          <input type="text" onChange={(e) => setHAbit(e.target.value)} />
+          <input
+            type="text"
+            value={habit}
+            onChange={(e) => setHAbit(e.target.value)}
+          />
           <button onClick={handleCreateHabit}> Create</button>
         </div>
 
@@ -67,7 +72,9 @@ function Home() {
           {/* {console.log(habits)} */}
           {habits.map((content) => {
             return (
-              <HabitsList content={content} auth={auth} key={content._id} />
+              content && (
+                <HabitsList content={content} auth={auth} key={content._id} />
+              )
             );
           })}
         </div>

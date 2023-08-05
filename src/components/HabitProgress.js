@@ -175,7 +175,6 @@ function HabitProgress({ habit, handleRendering }) {
                     ) : (
                       <img
                         onClick={() => {
-                          console.log(date);
                           handleStatus(date.date, date.status);
                         }}
                         src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -214,7 +213,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -252,7 +250,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -290,7 +287,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -328,7 +324,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -366,7 +361,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"
@@ -404,7 +398,6 @@ function HabitProgress({ habit, handleRendering }) {
                   ) : (
                     <img
                       onClick={() => {
-                        console.log(date);
                         handleStatus(date.date, date.status);
                       }}
                       src="https://cdn-icons-png.flaticon.com/128/1008/1008927.png"

@@ -7,7 +7,7 @@ import HabitProgress from "../components/HabitProgress";
 
 function Dashboard() {
   const auth = useAuth();
-  console.log(auth.user.habits);
+  // console.log(auth.user.habits);
   const [habits, setHabits] = useState(auth.user.habits);
   const [isRendering, setIsRendering] = useState(true);
 

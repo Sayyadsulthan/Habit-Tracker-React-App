@@ -33,12 +33,13 @@ export const useProvideAuth = () => {
       if (userToken) {
         const user = await jwtDecode(userToken);
         // console.log(user)
-        setUser(user);
         const response = await getHabits();
         // console.log("allHabits in hooks", response.data.habits);
         // console.log("jwt decode in hooks", user);
         if (response.success) {
           setUser({ ...user, habits: response.data.habits });
+        } else {
+          setUser(user);
         }
       }
 
@@ -50,14 +51,14 @@ export const useProvideAuth = () => {
   const login = async (email, password) => {
     setLoading(true);
     let data = await userLogin(email, password);
-    console.log(data);
+    // console.log(data);
     if (data.success) {
       const user = await jwtDecode(data.data.Token);
       setUser(user);
       // setting the user or token in local storage
       setItemInLocalStorage(LOCALSTORAGE_TOKEN_KEY, data.data.Token);
-      console.log("data success in login...", data);
-      console.log(user);
+      // console.log("data success in login...", data);
+      // console.log(user);
       setLoading(false);
       return {
         success: true,
@@ -105,7 +106,7 @@ export const useProvideAuth = () => {
       // setUser({ ...user, habits: allHabits.data.habits });
       const response = await getHabits();
       const habitStore = response.data.habits;
-      console.log("all Habits in createNewHabit hooks", habitStore);
+      // console.log("all Habits in createNewHabit hooks", habitStore);
       await setUser({ ...user, habits: [...habitStore] });
       console.warn(user);
       // setLoading(false);
@@ -128,14 +129,21 @@ export const useProvideAuth = () => {
 
     if (response.success) {
       const updatedHabits = await getHabits();
-      console.log("all habits in removeHabit hook ", updatedHabits);
-      setUser({ ...user, habits: [...updatedHabits.data.habits] });
+      // console.log("all habits in removeHabit hook ", updatedHabits);
+      if (updatedHabits.success) {
+        setUser({ ...user, habits: [...updatedHabits.data.habits] });
 
-      // setLoading(false);
-      return {
-        success: true,
-        data: updatedHabits.data.habits,
-      };
+        // setLoading(false);
+        return {
+          success: true,
+          data: updatedHabits.data.habits,
+        };
+      } else {
+        return {
+          success: true,
+          data: updatedHabits.data.habits,
+        };
+      }
     }
     // setLoading(false);
     return {
@@ -148,7 +156,7 @@ export const useProvideAuth = () => {
     // setLoading(true);
     const updatedHabits = await getHabits();
     if (updatedHabits.success) {
-      console.log("all habits in removeHabit hook ", updatedHabits);
+      // console.log("all habits in removeHabit hook ", updatedHabits);
       setUser({ ...user, habits: [...updatedHabits.data.habits] });
       // setLoading(false);
       return {
