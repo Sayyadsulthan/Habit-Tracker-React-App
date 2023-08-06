@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirm_Password] = useState("");
+  const history = useNavigate();
 
   const auth = useAuth();
 
@@ -21,6 +24,8 @@ function Signup() {
     );
     if (response.success) {
       console.log("user created successfully");
+      toast.success("Signup Successfull...");
+      history("/login");
     } else {
       console.log("error in signup", response.message);
       console.log("error in signup", response);

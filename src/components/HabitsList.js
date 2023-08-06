@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../hooks";
 import { toast } from "react-toastify";
 import { updateFavourite, updateHabit, updateHabitNAme } from "../api";
-import Loader from "../components/Loader";
 import styles from "../styles/home.module.css";
 
 let date = new Date();
@@ -22,7 +19,6 @@ function HabitsList({ content, auth }) {
   const [habitName, setHabitName] = useState("");
   let currentMonthData = content.status[getIndex(content)];
   const [isLoading, setIsLoading] = useState(false);
-  // const auth = useAuth();
   const [isRendering, setIsRedering] = useState(true);
 
   useEffect(() => {
@@ -34,7 +30,6 @@ function HabitsList({ content, auth }) {
     let res = 0;
     content.status.forEach((val, i) => {
       if (val.date === currentDate) {
-        // console.log("yes", i);
         res = i;
         return;
       }
@@ -43,7 +38,6 @@ function HabitsList({ content, auth }) {
   }
 
   const handleStatus = async (date, status) => {
-    // console.log(date, status);
     if (date === undefined) {
       return;
     } else {
@@ -85,17 +79,10 @@ function HabitsList({ content, auth }) {
     setIsLoading(false);
   };
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-
   return (
     <div className={styles.habitsContainer} key={content._id}>
       <div className={styles.habitStatus}>
-        {/* {console.log(content)} */}
-        {/* <span> habit-Status</span> */}
-        {/* {console.log(currentMonthData.completed )} */}
-        {!currentMonthData.completed ? (
+        {currentMonthData.completed === "false" ? (
           <img
             onClick={() =>
               handleStatus(currentMonthData.date, currentMonthData.completed)
@@ -130,7 +117,7 @@ function HabitsList({ content, auth }) {
               onChange={(e) => setHabitName(e.target.value)}
             />
           ) : (
-            <span> {isLoading ? "Pleasw wait" : habitName}</span>
+            <span> {isLoading ? "Please wait..." : habitName}</span>
           )}
         </div>
         <div className={styles.habitDate}>
@@ -176,12 +163,14 @@ function HabitsList({ content, auth }) {
         <span>
           <img
             onClick={async () => {
+              setIsLoading(true);
               const response = await auth.removeHabit(content._id);
               if (response.success) {
                 toast.success("habit removed successfully...");
               } else {
                 toast.error(response.message);
               }
+              setIsLoading(false);
             }}
             src="https://cdn-icons-png.flaticon.com/128/4825/4825570.png"
             alt="delete"

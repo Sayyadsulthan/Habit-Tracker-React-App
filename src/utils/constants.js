@@ -1,4 +1,5 @@
-const API_ROOT = "http://127.0.0.1:8000/api/user";
+// const API_ROOT = "http://127.0.0.1:8000/api/user";
+const API_ROOT = "https://react-habittracker-api.onrender.com/api/user";
 
 export const API_URLS = {
   dashboard: () => {

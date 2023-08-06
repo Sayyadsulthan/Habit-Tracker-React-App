@@ -7,43 +7,34 @@ import Loader from "../components/Loader";
 import styles from "../styles/home.module.css";
 import HabitsList from "../components/HabitsList";
 
-// let date = new Date();
-// let DD = date.getDate();
-// if (DD <= 9) DD = "0" + DD;
-// let MM = date.getMonth() + 1;
-// if (MM <= 9) MM = "0" + MM;
-// let YY = date.getFullYear();
-// // var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-// // var lastDay = new Date(date.getFullYear(), date.getMonth(), 0);
-// const currentDate = YY + "-" + MM + "-" + DD;
-// // let index = 0;
-
 function Home() {
   const [habit, setHAbit] = useState("");
   const auth = useAuth();
   const [habits, sethabits] = useState([...auth.user.habits]);
+  const [loading, setLoading] = useState(true);
 
-  // sethabits([...auth.user.habits]);
   useEffect(() => {
     sethabits([...auth.user.habits]);
-    // console.log("use effect in home");
+    setLoading(false);
   }, [toast, auth]);
 
   const handleCreateHabit = async () => {
     if (habit.length <= 1) {
-      // console.log("please enter the habit you want to track");
       return toast.warn("please enter the habit you want to track");
     }
-    // TO DO
+
+    // if the length of habit >1
+    setLoading(true);
     const response = await auth.createNewHabit(habit);
 
+    setHAbit("");
     if (response.success) {
-     await auth.updateHabit();
-      setHAbit("");
+      await auth.updateHabit();
       toast.success(response.message);
     } else {
       toast.error(response.message);
     }
+    setLoading(false);
   };
 
   return (
@@ -62,7 +53,7 @@ function Home() {
         <div className={styles.createhabit}>
           <input
             type="text"
-            value={habit}
+            value={loading ? "please wait..." : habit}
             onChange={(e) => setHAbit(e.target.value)}
           />
           <button onClick={handleCreateHabit}> Create</button>

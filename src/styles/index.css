@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url(https://blog.stackfindover.com/wp-content/uploads/2021/05/Pure-CSS-Particle-Animation.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
