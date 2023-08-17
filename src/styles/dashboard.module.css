@@ -23,6 +23,7 @@
     /* position: inherit; */
     /* height: 40vh; */
     display: flex;
+    /* flex-direction: row; */
     font-family: serif;
     font-weight: 600;
     /* width: 95vw; */
@@ -60,7 +61,7 @@
     background-color: beige;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    /* align-items: start; */
     /* width: 100%; */
 }
 

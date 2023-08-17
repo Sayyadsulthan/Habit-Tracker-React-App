@@ -16,7 +16,7 @@ const currentDate = YY + "-" + MM + "-" + DD;
 
 function HabitsList({ content, auth }) {
   const [isEditable, setIsEditable] = useState(false);
-  const [habitName, setHabitName] = useState("");
+  const [habitName, setHabitName] = useState(content.name);
   let currentMonthData = content.status[getIndex(content)];
   const [isLoading, setIsLoading] = useState(false);
   const [isRendering, setIsRedering] = useState(true);
@@ -24,7 +24,7 @@ function HabitsList({ content, auth }) {
   useEffect(() => {
     setHabitName(content.name);
     setIsRedering(false);
-  }, [toast, isRendering]);
+  }, [ isRendering,content.name]);
 
   function getIndex(content) {
     let res = 0;

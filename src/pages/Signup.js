@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -15,7 +15,6 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Signup page form");
     let response = await auth.signup(
       userName,
       email,
@@ -23,12 +22,10 @@ function Signup() {
       confirm_password
     );
     if (response.success) {
-      console.log("user created successfully");
       toast.success("Signup Successfull...");
       history("/login");
     } else {
-      console.log("error in signup", response.message);
-      console.log("error in signup", response);
+      toast.error(response.message);
     }
   };
 

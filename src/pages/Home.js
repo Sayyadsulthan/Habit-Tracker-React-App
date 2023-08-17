@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { toast } from "react-toastify";
 
-import Loader from "../components/Loader";
+// import Loader from "../components/Loader";
 import styles from "../styles/home.module.css";
 import HabitsList from "../components/HabitsList";
 
@@ -16,7 +16,7 @@ function Home() {
   useEffect(() => {
     sethabits([...auth.user.habits]);
     setLoading(false);
-  }, [toast, auth]);
+  }, [ auth]);
 
   const handleCreateHabit = async () => {
     if (habit.length <= 1) {

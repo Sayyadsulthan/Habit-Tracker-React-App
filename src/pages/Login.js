@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../hooks";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,26 +13,22 @@ function Login() {
     if (auth.user) {
       return history("/");
     }
-  }, [auth,history]);
+  }, [auth, history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("password", password);
-    console.log("email", email);
-
     let response = await auth.login(email, password);
     if (response.success) {
-      console.log("success");
+      toast.success("Login Succesfull...");
     } else {
-      console.log("error", response.message);
+      toast.error(response.message);
     }
   };
 
   if (auth.loading) {
     return <Loader />;
   }
-  console.log(auth.loading);
 
   return (
     <>
